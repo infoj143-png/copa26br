@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabela da Copa do Mundo 2026 | Simulador Interativo de Jogos</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Simule os jogos da Copa do Mundo 2026. Preencha os placares, veja a classificação dos grupos em tempo real e compartilhe seus palpites!">
+  <meta name="keywords" content="tabela copa 2026, simulador copa do mundo, jogos da copa 2026, tabela interativa, palpites copa 2026">
+  <meta name="author" content="Simulador Copa 2026">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tabela e Simulador da Copa do Mundo 2026">
+  <meta property="og:description" content="Simule os jogos da Copa do Mundo 2026. Preencha os placares, veja a classificação dos grupos em tempo real e compartilhe seus palpites!">
+  <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/3321/3321752.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: '#004b23',
+              lightgreen: '#38b000',
+              yellow: '#ffcc00',
+              blue: '#003566',
+              darkblue: '#001d3d',
+              accent: '#ffb703',
+              cardbg: '#f8fafc'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom scrollbar and input tweaks */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+    .gradient-hero {
+      background: linear-gradient(135deg, #002b15 0%, #003566 50%, #001d3d 100%);
+    }
+    .group-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .group-card:hover {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col">
+
+  <!-- Header / Hero Section -->
+  <header class="gradient-hero text-white py-8 px-4 sm:px-6 shadow-lg relative border-b-4 border-brand-yellow">
+    <div class="max-w-7xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-brand-yellow text-xs sm:text-sm font-semibold mb-3 backdrop-blur-sm border border-white/20">
+        <span>⚽ EUA • CANADÁ • MÉXICO 2026</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white mb-2 leading-tight">
+        Tabela e Simulador da <span class="text-brand-yellow">Copa do Mundo 2026</span>
+      </h1>
+      <p class="text-base sm:text-xl text-slate-200 max-w-2xl mx-auto font-light">
+        Simule os resultados dos jogos e veja quem avança para a fase final!
+      </p>
+
+      <!-- Action Control Bar -->
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+        <button id="btn-share" onclick="shareOnWhatsApp()" class="bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 px-5 rounded-lg shadow-md transition-all flex items-center gap-2 transform active:scale-95 text-sm sm:text-base">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+          Compartilhar no WhatsApp
+        </button>
+
+        <button onclick="randomizeScores()" class="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold py-2.5 px-4 rounded-lg shadow-md transition-all flex items-center gap-1.5 text-sm sm:text-base">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+          </svg>
+          Simular Aleatório
+        </button>
+
+        <button onclick="resetScores()" class="bg-white/10 hover:bg-white/20 text-white font-medium py-2.5 px-4 rounded-lg backdrop-blur-sm transition-all border border-white/20 text-sm sm:text-base">
+          Limpar Placares
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Filter & Navigation Bar -->
+  <nav class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
+      <span class="text-xs font-bold text-slate-500 uppercase tracking-wider whitespace-nowrap">Filtrar Grupo:</span>
+      <div id="group-filters" class="flex gap-1.5">
+        <button onclick="filterGroup('ALL')" class="filter-btn active-filter px-3 py-1 rounded-full text-xs font-bold bg-brand-green text-white transition-all whitespace-nowrap" data-group="ALL">Todos</button>
+        <!-- Dynamic group buttons populated by JS -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-2 sm:px-6 py-6 space-y-8">
+
+    <!-- Group Stage Section Header -->
+    <div class="flex items-center justify-between border-b pb-2">
+      <div>
+        <h2 class="text-xl sm:text-2xl font-black text-brand-blue flex items-center gap-2">
+          <span class="w-3 h-6 bg-brand-green rounded-full inline-block"></span>
+          Fase de Grupos
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500">Insira os placares dos jogos para atualizar a tabela de classificação instantaneamente.</p>
+      </div>
+      <div class="hidden sm:block text-xs bg-emerald-50 text-emerald-800 px-3 py-1.5 rounded-lg border border-emerald-200 font-medium">
+        ⚡ Atualização em tempo real
+      </div>
+    </div>
+
+    <!-- Groups Grid -->
+    <div id="groups-container" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Dynamic rendering via JS -->
+    </div>
+
+    <!-- Final Qualified Teams Summary Box -->
+    <section class="bg-white rounded-2xl p-6 shadow-md border border-slate-200 my-8">
+      <div class="border-b pb-4 mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <h2 class="text-xl font-black text-brand-darkblue flex items-center gap-2">
+            🏆 Resumo dos Classificados
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500">Os 2 primeiros de cada grupo e os 8 melhores 3º colocados avançam para o Mata-Mata (Dezesseis-avos de final).</p>
+        </div>
+        <button onclick="shareOnWhatsApp()" class="bg-green-600 hover:bg-green-500 text-white text-xs sm:text-sm font-bold py-2 px-4 rounded-lg flex items-center gap-1.5 self-start sm:self-auto shadow transition">
+          Compartilhar Classificados no WhatsApp
+        </button>
+      </div>
+
+      <div id="qualified-summary" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- Dynamic summary rendered by JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 px-4 border-t border-slate-800 text-center text-sm">
+    <div class="max-w-7xl mx-auto space-y-3">
+      <div class="flex justify-center items-center gap-2 text-brand-yellow font-bold text-base">
+        <span>🏆 Simulador da Copa do Mundo 2026</span>
+      </div>
+      <p class="text-xs text-slate-400 max-w-xl mx-auto">
+        Aplicação leve e interativa para simulação de palpites dos jogos do Torneio Mundial 2026.
+      </p>
+      <div class="text-xs text-slate-500">
+        Desenvolvido com HTML5, Tailwind CSS e Vanilla JavaScript • 100% em Português do Brasil (pt-BR)
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Logic -->
+  <script>
+    // 48 Teams in 12 Groups (A to L)
+    const GROUPS_DATA = {
+      'A': [
+        { name: 'México', flag: '🇲🇽', code: 'MEX' },
+        { name: 'África do Sul', flag: '🇿🇦', code: 'RSA' },
+        { name: 'Coreia do Sul', flag: '🇰🇷', code: 'KOR' },
+        { name: 'Dinamarca', flag: '🇩🇰', code: 'DEN' }
+      ],
+      'B': [
+        { name: 'Canadá', flag: '🇨🇦', code: 'CAN' },
+        { name: 'Suíça', flag: '🇨🇭', code: 'SUI' },
+        { name: 'Egito', flag: '🇪🇬', code: 'EGY' },
+        { name: 'Nova Zelândia', flag: '🇳🇿', code: 'NZL' }
+      ],
+      'C': [
+        { name: 'EUA', flag: '🇺🇸', code: 'USA' },
+        { name: 'Austrália', flag: '🇦🇺', code: 'AUS' },
+        { name: 'Nigéria', flag: '🇳🇬', code: 'NGA' },
+        { name: 'Sérvia', flag: '🇷🇸', code: 'SRB' }
+      ],
+      'D': [
+        { name: 'Brasil', flag: '🇧🇷', code: 'BRA' },
+        { name: 'Noruega', flag: '🇳🇴', code: 'NOR' },
+        { name: 'Marrocos', flag: '🇲🇦', code: 'MAR' },
+        { name: 'Japão', flag: '🇯🇵', code: 'JPN' }
+      ],
+      'E': [
+        { name: 'Argentina', flag: '🇦🇷', code: 'ARG' },
+        { name: 'Colômbia', flag: '🇨🇴', code: 'COL' },
+        { name: 'Polônia', flag: '🇵🇱', code: 'POL' },
+        { name: 'Tunísia', flag: '🇹🇳', code: 'TUN' }
+      ],
+      'F': [
+        { name: 'França', flag: '🇫🇷', code: 'FRA' },
+        { name: 'Uruguai', flag: '🇺🇾', code: 'URU' },
+        { name: 'Uzbequistão', flag: '🇺🇿', code: 'UZB' },
+        { name: 'Gana', flag: '🇬🇭', code: 'GHA' }
+      ],
+      'G': [
+        { name: 'Espanha', flag: '🇪🇸', code: 'ESP' },
+        { name: 'Croácia', flag: '🇭🇷', code: 'CRO' },
+        { name: 'Equador', flag: '🇪🇨', code: 'ECU' },
+        { name: 'Iraque', flag: '🇮🇶', code: 'IRQ' }
+      ],
+      'H': [
+        { name: 'Inglaterra', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', code: 'ENG' },
+        { name: 'Senegal', flag: '🇸🇳', code: 'SEN' },
+        { name: 'Peru', flag: '🇵🇪', code: 'PER' },
+        { name: 'Catar', flag: '🇶🇦', code: 'QAT' }
+      ],
+      'I': [
+        { name: 'Alemanha', flag: '🇩🇪', code: 'GER' },
+        { name: 'Costa do Marfim', flag: '🇨🇮', code: 'CIV' },
+        { name: 'Chile', flag: '🇨🇱', code: 'CHI' },
+        { name: 'Arábia Saudita', flag: '🇸🇦', code: 'KSA' }
+      ],
+      'J': [
+        { name: 'Bélgica', flag: '🇧🇪', code: 'BEL' },
+        { name: 'Áustria', flag: '🇦🇹', code: 'AUT' },
+        { name: 'Argélia', flag: '🇩🇿', code: 'ALG' },
+        { name: 'Panamá', flag: '🇵🇦', code: 'PAN' }
+      ],
+      'K': [
+        { name: 'Holanda', flag: '🇳🇱', code: 'NED' },
+        { name: 'Portugal', flag: '🇵🇹', code: 'POR' },
+        { name: 'Camarões', flag: '🇨🇲', code: 'CMR' },
+        { name: 'Costa Rica', flag: '🇨🇷', code: 'CRC' }
+      ],
+      'L': [
+        { name: 'Itália', flag: '🇮🇹', code: 'ITA' },
+        { name: 'Paraguai', flag: '🇵🇾', code: 'PAR' },
+        { name: 'Mali', flag: '🇲🇱', code: 'MLI' },
+        { name: 'Ucrânia', flag: '🇺🇦', code: 'UKR' }
+      ]
+    };
+
+    // Store user scores: { 'A_0_1': { score1: 2, score2: 1 } }
+    let userScores = {};
+
+    // Generate standard match schedule for a 4-team group (Indices: 0, 1, 2, 3)
+    // Match 1: 0 vs 1
+    // Match 2: 2 vs 3
+    // Match 3: 0 vs 2
+    // Match 4: 3 vs 1
+    // Match 5: 3 vs 0
+    // Match 6: 1 vs 2
+    const MATCH_PAIRINGS = [
+      [0, 1], [2, 3],
+      [0, 2], [3, 1],
+      [3, 0], [1, 2]
+    ];
+
+    // Load saved scores from localStorage
+    function loadSavedScores() {
+      try {
+        const saved = localStorage.getItem('copa2026_scores');
+        if (saved) {
+          userScores = JSON.parse(saved);
+        }
+      } catch (e) {
+        console.error("Erro ao carregar dados salvos:", e);
+      }
+    }
+
+    // Save scores to localStorage
+    function saveScores() {
+      try {
+        localStorage.setItem('copa2026_scores', JSON.stringify(userScores));
+      } catch (e) {
+        console.error("Erro ao salvar dados:", e);
+      }
+    }
+
+    // Render group filters
+    function initFilters() {
+      const filterContainer = document.getElementById('group-filters');
+      Object.keys(GROUPS_DATA).forEach(group => {
+        const btn = document.createElement('button');
+        btn.onclick = () => filterGroup(group);
+        btn.className = 'filter-btn px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-700 hover:bg-slate-300 transition-all whitespace-nowrap';
+        btn.dataset.group = group;
+        btn.textContent = `Grupo ${group}`;
+        filterContainer.appendChild(btn);
+      });
+    }
+
+    function filterGroup(selectedGroup) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.dataset.group === selectedGroup) {
+          btn.className = 'filter-btn active-filter px-3 py-1 rounded-full text-xs font-bold bg-brand-green text-white transition-all whitespace-nowrap shadow-sm';
+        } else {
+          btn.className = 'filter-btn px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-700 hover:bg-slate-300 transition-all whitespace-nowrap';
+        }
+      });
+
+      const cards = document.querySelectorAll('.group-card-wrapper');
+      cards.forEach(card => {
+        if (selectedGroup === 'ALL' || card.dataset.group === selectedGroup) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // Render all groups
+    function renderGroups() {
+      const container = document.getElementById('groups-container');
+      container.innerHTML = '';
+
+      Object.keys(GROUPS_DATA).forEach(groupKey => {
+        const teams = GROUPS_DATA[groupKey];
+
+        const cardWrapper = document.createElement('div');
+        cardWrapper.className = 'group-card-wrapper group-card bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden flex flex-col';
+        cardWrapper.dataset.group = groupKey;
+
+        // Group Header
+        let html = `
+          <div class="bg-brand-blue text-white px-4 py-3 flex items-center justify-between border-b-2 border-brand-yellow">
+            <h3 class="font-black text-lg tracking-wide flex items-center gap-2">
+              <span class="bg-brand-yellow text-brand-darkblue px-2 py-0.5 rounded text-xs font-extrabold">GRUPO</span> ${groupKey}
+            </h3>
+            <span class="text-xs text-slate-300 font-medium">4 seleções • 6 jogos</span>
+          </div>
+
+          <div class="p-4 flex-grow flex flex-col gap-6">
+            <!-- Standings Table -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-xs sm:text-sm text-left">
+                <thead>
+                  <tr class="bg-slate-100 text-slate-600 border-b border-slate-200 uppercase font-semibold text-[11px]">
+                    <th class="py-2 px-1 text-center w-6">#</th>
+                    <th class="py-2 px-2">Seleção</th>
+                    <th class="py-2 px-1 text-center font-bold text-slate-900" title="Pontos">P</th>
+                    <th class="py-2 px-1 text-center" title="Jogos">J</th>
+                    <th class="py-2 px-1 text-center" title="Vitórias">V</th>
+                    <th class="py-2 px-1 text-center" title="Empates">E</th>
+                    <th class="py-2 px-1 text-center" title="Derrotas">D</th>
+                    <th class="py-2 px-1 text-center" title="Gols Pró">GP</th>
+                    <th class="py-2 px-1 text-center" title="Gols Contra">GC</th>
+                    <th class="py-2 px-1 text-center font-semibold" title="Saldo de Gols">SG</th>
+                  </tr>
+                </thead>
+                <tbody id="table-body-${groupKey}">
+                  <!-- Calculated dynamically -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Match Predictions -->
+            <div class="bg-slate-50 rounded-lg p-3 border border-slate-200">
+              <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2.5 flex items-center justify-between">
+                <span>Jogos do Grupo ${groupKey}</span>
+                <span class="text-[10px] text-slate-400 font-normal">Preencha os placares</span>
+              </h4>
+              <div class="space-y-2">
+        `;
+
+        MATCH_PAIRINGS.forEach((pair, idx) => {
+          const team1 = teams[pair[0]];
+          const team2 = teams[pair[1]];
+          const matchKey = `${groupKey}_${idx}`;
+          const currentScore = userScores[matchKey] || { score1: '', score2: '' };
+
+          html += `
+            <div class="flex items-center justify-between gap-1 sm:gap-2 bg-white p-2 rounded border border-slate-200 text-xs sm:text-sm">
+              <!-- Team 1 -->
+              <div class="flex items-center justify-end gap-1.5 flex-1 min-w-0 text-right">
+                <span class="font-semibold text-slate-800 truncate" title="${team1.name}">${team1.name}</span>
+                <span class="text-base leading-none">${team1.flag}</span>
+              </div>
+
+              <!-- Inputs -->
+              <div class="flex items-center gap-1 px-1">
+                <input type="number" min="0" max="20" placeholder="-"
+                  value="${currentScore.score1}"
+                  oninput="updateScore('${groupKey}', ${idx}, 1, this.value)"
+                  class="w-9 h-8 sm:w-10 sm:h-9 text-center font-bold text-slate-900 bg-slate-50 border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-brand-green focus:bg-white text-sm" />
+                <span class="text-slate-400 font-bold text-xs">x</span>
+                <input type="number" min="0" max="20" placeholder="-"
+                  value="${currentScore.score2}"
+                  oninput="updateScore('${groupKey}', ${idx}, 2, this.value)"
+                  class="w-9 h-8 sm:w-10 sm:h-9 text-center font-bold text-slate-900 bg-slate-50 border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-brand-green focus:bg-white text-sm" />
+              </div>
+
+              <!-- Team 2 -->
+              <div class="flex items-center justify-start gap-1.5 flex-1 min-w-0 text-left">
+                <span class="text-base leading-none">${team2.flag}</span>
+                <span class="font-semibold text-slate-800 truncate" title="${team2.name}">${team2.name}</span>
+              </div>
+            </div>
+          `;
+        });
+
+        html += `
+              </div>
+            </div>
+          </div>
+        `;
+
+        cardWrapper.innerHTML = html;
+        container.appendChild(cardWrapper);
+      });
+
+      recalculateAllStandings();
+    }
+
+    // Handle user score input
+    function updateScore(groupKey, matchIdx, teamNum, value) {
+      const matchKey = `${groupKey}_${matchIdx}`;
+      if (!userScores[matchKey]) {
+        userScores[matchKey] = { score1: '', score2: '' };
+      }
+
+      const val = value.trim() === '' ? '' : Math.max(0, parseInt(value, 10) || 0);
+
+      if (teamNum === 1) {
+        userScores[matchKey].score1 = val;
+      } else {
+        userScores[matchKey].score2 = val;
+      }
+
+      saveScores();
+      recalculateGroupStandings(groupKey);
+      updateQualifiedSummary();
+    }
+
+    // Calculate standings for a specific group
+    function calculateGroupStats(groupKey) {
+      const teams = GROUPS_DATA[groupKey];
+      // Init stats for each team
+      const stats = teams.map(team => ({
+        ...team,
+        P: 0,
+        J: 0,
+        V: 0,
+        E: 0,
+        D: 0,
+        GP: 0,
+        GC: 0,
+        SG: 0
+      }));
+
+      MATCH_PAIRINGS.forEach((pair, idx) => {
+        const matchKey = `${groupKey}_${idx}`;
+        const match = userScores[matchKey];
+
+        if (match && match.score1 !== '' && match.score2 !== '' && !isNaN(match.score1) && !isNaN(match.score2)) {
+          const s1 = parseInt(match.score1, 10);
+          const s2 = parseInt(match.score2, 10);
+
+          const t1 = stats[pair[0]];
+          const t2 = stats[pair[1]];
+
+          t1.J += 1;
+          t2.J += 1;
+
+          t1.GP += s1;
+          t1.GC += s2;
+          t2.GP += s2;
+          t2.GC += s1;
+
+          t1.SG = t1.GP - t1.GC;
+          t2.SG = t2.GP - t2.GC;
+
+          if (s1 > s2) {
+            t1.P += 3;
+            t1.V += 1;
+            t2.D += 1;
+          } else if (s2 > s1) {
+            t2.P += 3;
+            t2.V += 1;
+            t1.D += 1;
+          } else {
+            t1.P += 1;
+            t1.E += 1;
+            t2.P += 1;
+            t2.E += 1;
+          }
+        }
+      });
+
+      // Sort criteria: Points (P) > Goal Difference (SG) > Goals For (GP) > Name
+      stats.sort((a, b) => {
+        if (b.P !== a.P) return b.P - a.P;
+        if (b.SG !== a.SG) return b.SG - a.SG;
+        if (b.GP !== a.GP) return b.GP - a.GP;
+        return a.name.localeCompare(b.name);
+      });
+
+      return stats;
+    }
+
+    // Render group table HTML
+    function recalculateGroupStandings(groupKey) {
+      const stats = calculateGroupStats(groupKey);
+      const tbody = document.getElementById(`table-body-${groupKey}`);
+      if (!tbody) return;
+
+      tbody.innerHTML = '';
+      stats.forEach((st, idx) => {
+        const row = document.createElement('tr');
+
+        // Qualification styling badge
+        let posBadge = '';
+        if (idx === 0 || idx === 1) {
+          posBadge = 'bg-emerald-500 text-white font-bold';
+        } else if (idx === 2) {
+          posBadge = 'bg-amber-400 text-slate-900 font-bold';
+        } else {
+          posBadge = 'bg-slate-200 text-slate-600';
+        }
+
+        row.className = `border-b border-slate-100 hover:bg-slate-50 transition ${idx < 2 ? 'font-medium' : ''}`;
+        row.innerHTML = `
+          <td class="py-2 px-1 text-center">
+            <span class="inline-block w-5 h-5 leading-5 rounded-full text-[11px] text-center ${posBadge}">
+              ${idx + 1}
+            </span>
+          </td>
+          <td class="py-2 px-2 flex items-center gap-1.5">
+            <span class="text-base">${st.flag}</span>
+            <span class="truncate max-w-[100px] sm:max-w-none text-slate-800 font-semibold">${st.name}</span>
+          </td>
+          <td class="py-2 px-1 text-center font-black text-brand-blue">${st.P}</td>
+          <td class="py-2 px-1 text-center text-slate-600">${st.J}</td>
+          <td class="py-2 px-1 text-center text-slate-600">${st.V}</td>
+          <td class="py-2 px-1 text-center text-slate-600">${st.E}</td>
+          <td class="py-2 px-1 text-center text-slate-600">${st.D}</td>
+          <td class="py-2 px-1 text-center text-slate-600">${st.GP}</td>
+          <td class="py-2 px-1 text-center text-slate-600">${st.GC}</td>
+          <td class="py-2 px-1 text-center font-bold ${st.SG > 0 ? 'text-emerald-600' : st.SG < 0 ? 'text-rose-600' : 'text-slate-500'}">
+            ${st.SG > 0 ? '+' + st.SG : st.SG}
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function recalculateAllStandings() {
+      Object.keys(GROUPS_DATA).forEach(groupKey => {
+        recalculateGroupStandings(groupKey);
+      });
+      updateQualifiedSummary();
+    }
+
+    // Calculate overall 1st, 2nd, and top 8 3rd placed teams across all 12 groups
+    function getQualifiedTeams() {
+      const groupResults = {};
+      const thirdPlaces = [];
+
+      Object.keys(GROUPS_DATA).forEach(groupKey => {
+        const stats = calculateGroupStats(groupKey);
+        groupResults[groupKey] = {
+          first: stats[0],
+          second: stats[1],
+          third: stats[2],
+          fourth: stats[3]
+        };
+        thirdPlaces.push({ group: groupKey, ...stats[2] });
+      });
+
+      // Sort third place teams: P > SG > GP > Name
+      thirdPlaces.sort((a, b) => {
+        if (b.P !== a.P) return b.P - a.P;
+        if (b.SG !== a.SG) return b.SG - a.SG;
+        if (b.GP !== a.GP) return b.GP - a.GP;
+        return a.name.localeCompare(b.name);
+      });
+
+      const best8Third = thirdPlaces.slice(0, 8);
+      const best8ThirdGroups = new Set(best8Third.map(t => t.group));
+
+      return { groupResults, best8Third, best8ThirdGroups };
+    }
+
+    function updateQualifiedSummary() {
+      const summaryContainer = document.getElementById('qualified-summary');
+      if (!summaryContainer) return;
+
+      const { groupResults, best8ThirdGroups } = getQualifiedTeams();
+      summaryContainer.innerHTML = '';
+
+      Object.keys(GROUPS_DATA).forEach(groupKey => {
+        const g = groupResults[groupKey];
+        const isThirdAdvancing = best8ThirdGroups.has(groupKey);
+
+        const groupCard = document.createElement('div');
+        groupCard.className = 'bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs space-y-2';
+
+        groupCard.innerHTML = `
+          <div class="font-black text-brand-blue flex justify-between items-center border-b pb-1">
+            <span>GRUPO ${groupKey}</span>
+            <span class="text-[10px] bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded font-bold">Classificados</span>
+          </div>
+          <div class="space-y-1">
+            <div class="flex items-center justify-between text-emerald-700 font-bold bg-emerald-50 px-2 py-1 rounded border border-emerald-100">
+              <span class="flex items-center gap-1">1º ${g.first.flag} ${g.first.name}</span>
+              <span class="text-[11px]">${g.first.P} pts</span>
+            </div>
+            <div class="flex items-center justify-between text-emerald-700 font-bold bg-emerald-50 px-2 py-1 rounded border border-emerald-100">
+              <span class="flex items-center gap-1">2º ${g.second.flag} ${g.second.name}</span>
+              <span class="text-[11px]">${g.second.P} pts</span>
+            </div>
+            <div class="flex items-center justify-between ${isThirdAdvancing ? 'text-amber-700 font-semibold bg-amber-50 border border-amber-200' : 'text-slate-400 line-through'} px-2 py-1 rounded">
+              <span class="flex items-center gap-1">3º ${g.third.flag} ${g.third.name}</span>
+              <span class="text-[10px]">${g.third.P} pts ${isThirdAdvancing ? '⭐' : ''}</span>
+            </div>
+          </div>
+        `;
+        summaryContainer.appendChild(groupCard);
+      });
+    }
+
+    // Randomize all match scores
+    function randomizeScores() {
+      Object.keys(GROUPS_DATA).forEach(groupKey => {
+        MATCH_PAIRINGS.forEach((_, idx) => {
+          const matchKey = `${groupKey}_${idx}`;
+          // Generate realistic football scores weighted towards 0-3 goals
+          const random1 = Math.floor(Math.random() * 4);
+          const random2 = Math.floor(Math.random() * 4);
+          userScores[matchKey] = { score1: random1, score2: random2 };
+        });
+      });
+
+      saveScores();
+      renderGroups();
+    }
+
+    // Reset all match scores
+    function resetScores() {
+      if (confirm('Tem certeza que deseja apagar todos os palpites preenchidos?')) {
+        userScores = {};
+        saveScores();
+        renderGroups();
+      }
+    }
+
+    // WhatsApp Sharing Feature
+    function shareOnWhatsApp() {
+      const { groupResults, best8ThirdGroups } = getQualifiedTeams();
+
+      let message = `🏆 *MEUS PALPITES - COPA DO MUNDO 2026* 🏆\n`;
+      message += `Simulador e Tabela Interativa\n\n`;
+      message += `*Classificados da Fase de Grupos:*\n\n`;
+
+      Object.keys(GROUPS_DATA).forEach(groupKey => {
+        const g = groupResults[groupKey];
+        message += `*Grupo ${groupKey}:* ${g.first.flag} ${g.first.name} (1º) e ${g.second.flag} ${g.second.name} (2º)`;
+        if (best8ThirdGroups.has(groupKey)) {
+          message += ` + ${g.third.flag} ${g.third.name} (3º ⭐)`;
+        }
+        message += `\n`;
+      });
+
+      message += `\nMonte a sua tabela também e faça sua simulação! ⚽`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://api.whatsapp.com/send?text=${encodedMessage}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // Initialize application
+    window.addEventListener('DOMContentLoaded', () => {
+      loadSavedScores();
+      initFilters();
+      renderGroups();
+    });
+  </script>
+</body>
+</html>
