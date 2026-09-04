@@ -1,0 +1,27 @@
+# Robots.txt for Simulador da Copa do Mundo 2026
+# Allow all search engines and AI crawlers for optimal SEO & GEO (Generative Engine Optimization)
+
+User-agent: *
+Allow: /
+
+# Explicit AI Crawlers & LLM Bots
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: DeepSeekBot
+Allow: /
+
+# Sitemap
+Sitemap: https://copa2026.example.com/sitemap.xml

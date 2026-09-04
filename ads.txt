@@ -1,0 +1,14 @@
+# ads.txt file for Simulador Copa do Mundo 2026
+# Placeholder authorization records for Ad Networks (Monetag, Adsterra, HilltopAds, Google AdSense)
+
+# Monetag / PropellerAds
+# monetag.com, DIRECT, PUBLISHER_ID_HERE, f08c47fec0942fa0
+
+# Adsterra
+# adsterra.com, DIRECT, PUBLISHER_ID_HERE, f08c47fec0942fa0
+
+# HilltopAds
+# hilltopads.com, DIRECT, PUBLISHER_ID_HERE, f08c47fec0942fa0
+
+# Google AdSense (Example)
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
