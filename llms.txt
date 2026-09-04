@@ -1,0 +1,23 @@
+# Tabela e Simulador da Copa do Mundo 2026
+
+> Aplicação web interativa em Português (pt-BR) para simulação de placares, classificação em tempo real e cálculo dos classificados da Copa do Mundo FIFA 2026.
+
+## Contexto do Site
+- **Nome:** Tabela e Simulador da Copa do Mundo 2026
+- **Idioma:** Português do Brasil (pt-BR)
+- **Evento:** Copa do Mundo FIFA 2026 (Estados Unidos, Canadá e México)
+- **Datas do Torneio:** 11 de junho a 19 de julho de 2026
+- **Formato:** 48 seleções divididas em 12 grupos (Grupos A a L) com 4 seleções cada.
+
+## Recursos e Funcionalidades
+- **Simulação Interativa de Placares:** Permite preencher placares de todos os jogos da fase de grupos.
+- **Classificação em Tempo Real:** Atualiza automaticamente pontos (P), jogos (J), vitórias (V), empates (E), derrotas (D), gols pró (GP), gols contra (GC) e saldo de gols (SG).
+- **Cálculo de Classificados:** Identifica os 2 primeiros colocados de cada um dos 12 grupos e os 8 melhores 3º colocados para a fase de dezesseis-avos de final.
+- **Simulação Aleatória e Limpeza:** Botões para preencher placares aleatoriamente ou resetar as simulações.
+- **Compartilhamento no WhatsApp:** Opção para compartilhar os resultados e a lista de classificados diretamente via WhatsApp.
+- **Armazenamento Local:** Salvamento automático dos placares no `localStorage` do navegador.
+
+## Perguntas Frequentes (FAQ)
+- **Quando começa a Copa do Mundo 2026?** A abertura será no dia 11 de junho de 2026 no Estádio Azteca (Cidade do México), e a final no dia 19 de julho de 2026 no MetLife Stadium (Nova Jersey).
+- **Como funciona o formato com 48 seleções?** As 48 seleções são divididas em 12 grupos de 4 times. Avançam para o mata-mata os 2 primeiros de cada grupo mais os 8 melhores terceiros colocados.
+- **Como usar o simulador?** Digite os placares dos jogos nos campos indicados em cada grupo. As tabelas de classificação e o resumo dos classificados são atualizados instantaneamente.

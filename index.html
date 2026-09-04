@@ -7,15 +7,109 @@
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="Simule os jogos da Copa do Mundo 2026. Preencha os placares, veja a classificação dos grupos em tempo real e compartilhe seus palpites!">
-  <meta name="keywords" content="tabela copa 2026, simulador copa do mundo, jogos da copa 2026, tabela interativa, palpites copa 2026">
+  <meta name="keywords" content="tabela copa 2026, simulador copa do mundo, jogos da copa 2026, tabela interativa, palpites copa 2026, copa do mundo 2026 grupos, eua canada mexico 2026">
   <meta name="author" content="Simulador Copa 2026">
   <meta name="robots" content="index, follow">
 
-  <!-- Open Graph / Social Media -->
+  <!-- Social Meta Tags / Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Tabela e Simulador da Copa do Mundo 2026">
-  <meta property="og:description" content="Simule os jogos da Copa do Mundo 2026. Preencha os placares, veja a classificação dos grupos em tempo real e compartilhe seus palpites!">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Tabela e Simulador da Copa do Mundo 2026">
+  <meta property="og:title" content="Tabela e Simulador da Copa do Mundo 2026 | Monte Seus Palpites">
+  <meta property="og:description" content="Simule os resultados dos jogos da Copa do Mundo 2026. Preencha os placares, veja a classificação dos grupos em tempo real e compartilhe seus palpites!">
   <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/3321/3321752.png">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tabela e Simulador da Copa do Mundo 2026">
+  <meta name="twitter:description" content="Simule os jogos da Copa do Mundo 2026. Preencha os placares e acompanhe a classificação dos grupos em tempo real!">
+  <meta name="twitter:image" content="https://cdn-icons-png.flaticon.com/512/3321/3321752.png">
+
+  <!-- JSON-LD Structured Data (GEO & SEO for WebSite, SportsEvent, and FAQPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://copa2026.example.com/#website",
+        "url": "https://copa2026.example.com/",
+        "name": "Tabela e Simulador da Copa do Mundo 2026",
+        "description": "Simulador interativo dos jogos e tabela da Copa do Mundo FIFA 2026 com atualização em tempo real.",
+        "inLanguage": "pt-BR"
+      },
+      {
+        "@type": "SportsEvent",
+        "@id": "https://copa2026.example.com/#event",
+        "name": "Copa do Mundo FIFA 2026",
+        "description": "Copa do Mundo FIFA 2026 realizada conjuntamente nos Estados Unidos, Canadá e México com 48 seleções.",
+        "startDate": "2026-06-11",
+        "endDate": "2026-07-19",
+        "sport": "Futebol / Soccer",
+        "location": [
+          {
+            "@type": "Place",
+            "name": "Estados Unidos",
+            "address": { "@type": "PostalAddress", "addressCountry": "US" }
+          },
+          {
+            "@type": "Place",
+            "name": "Canadá",
+            "address": { "@type": "PostalAddress", "addressCountry": "CA" }
+          },
+          {
+            "@type": "Place",
+            "name": "México",
+            "address": { "@type": "PostalAddress", "addressCountry": "MX" }
+          }
+        ],
+        "organizer": {
+          "@type": "SportsOrganization",
+          "name": "FIFA",
+          "url": "https://www.fifa.com"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://copa2026.example.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Quando começa a Copa do Mundo 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A Copa do Mundo de 2026 começa no dia 11 de junho de 2026 no Estádio Azteca (Cidade do México) e termina em 19 de julho de 2026 no MetLife Stadium (Nova Jersey/EUA)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Como funciona o novo formato da Copa 2026 com 48 seleções?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "As 48 seleções são divididas em 12 grupos de 4 times (Grupos A a L). Avançam para o mata-mata (fase de dezesseis-avos de final) os 2 primeiros colocados de cada grupo e os 8 melhores 3º colocados."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Como usar o simulador da Copa do Mundo 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Basta preencher os placares dos jogos diretamente nos campos de cada grupo. A classificação e os classificados para a fase final são recalculados automaticamente em tempo real."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quais são os grupos da Copa do Mundo 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A competição possui 12 grupos (Grupos A ao L) reunindo seleções das seis confederações continentais, incluindo o Brasil no Grupo D e os anfitriões EUA, Canadá e México."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -57,9 +151,24 @@
     .group-card:hover {
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
     }
+    /* Ad Container Helper Styles */
+    .ad-container {
+      transition: background-color 0.2s ease;
+    }
+    .ad-container:hover {
+      background-color: rgba(226, 232, 240, 0.9);
+    }
   </style>
 </head>
-<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col">
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col pb-16">
+
+  <!-- Top Banner Ad Container (Monetag / Adsterra / HilltopAds) -->
+  <aside aria-label="Anúncio Topo" class="w-full bg-slate-200/50 border-b border-slate-300 py-2 px-4 flex justify-center items-center overflow-hidden">
+    <div class="ad-container w-full max-w-[728px] min-h-[90px] border border-dashed border-slate-400/60 rounded-lg flex items-center justify-center text-slate-500 text-xs font-semibold p-2 text-center">
+      <!-- TOP_BANNER_AD_HERE -->
+      <span class="uppercase tracking-wider">Espaço Publicitário • Anúncio Cabeçalho (728x90)</span>
+    </div>
+  </aside>
 
   <!-- Header / Hero Section -->
   <header class="gradient-hero text-white py-8 px-4 sm:px-6 shadow-lg relative border-b-4 border-brand-yellow">
@@ -130,6 +239,14 @@
       <!-- Dynamic rendering via JS -->
     </div>
 
+    <!-- In-Content Ad Container (Between Match Simulator & Standings Summary) -->
+    <aside aria-label="Anúncio no Conteúdo" class="my-8 flex justify-center items-center">
+      <div class="ad-container w-full max-w-[728px] min-h-[100px] bg-white border border-dashed border-slate-300 rounded-xl flex items-center justify-center text-slate-400 text-xs font-semibold p-4 shadow-sm text-center">
+        <!-- IN_CONTENT_AD_HERE -->
+        <span class="uppercase tracking-wider">Espaço Publicitário • Anúncio no Conteúdo (728x90 / Nativo)</span>
+      </div>
+    </aside>
+
     <!-- Final Qualified Teams Summary Box -->
     <section class="bg-white rounded-2xl p-6 shadow-md border border-slate-200 my-8">
       <div class="border-b pb-4 mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
@@ -149,6 +266,77 @@
       </div>
     </section>
 
+    <!-- Portuguese FAQ Accordion Section (SEO & GEO Optimizations) -->
+    <section class="bg-white rounded-2xl p-6 shadow-md border border-slate-200 my-8">
+      <div class="border-b pb-4 mb-6">
+        <h2 class="text-xl sm:text-2xl font-black text-brand-blue flex items-center gap-2">
+          <span class="w-3 h-6 bg-brand-yellow rounded-full inline-block"></span>
+          Perguntas Frequentes sobre a Copa do Mundo 2026 (FAQ)
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">
+          Tire suas dúvidas sobre o novo formato do torneio, as sedes e como funciona o simulador interativo.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition-all [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between font-bold text-slate-800 cursor-pointer text-sm sm:text-base">
+            <span>Quando começa e onde será realizada a Copa do Mundo 2026?</span>
+            <span class="transition group-open:rotate-180 text-slate-500">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </span>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200 pt-3">
+            A Copa do Mundo de 2026 terá início no dia 11 de junho de 2026 no lendário Estádio Azteca (Cidade do México). A grande final será realizada no dia 19 de julho de 2026 no MetLife Stadium (Nova Jersey / Nova York, EUA). O torneio será sediado conjuntamente por três países: Estados Unidos, Canadá e México.
+          </p>
+        </details>
+
+        <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition-all [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between font-bold text-slate-800 cursor-pointer text-sm sm:text-base">
+            <span>Como funciona o novo formato com 48 seleções?</span>
+            <span class="transition group-open:rotate-180 text-slate-500">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </span>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200 pt-3">
+            Pela primeira vez na história, a Copa do Mundo contará com 48 seleções divididas em 12 grupos de 4 equipes cada (Grupos A a L). Classificam-se para o mata-mata (fase de dezesseis-avos de final) os 2 primeiros de cada grupo e os 8 melhores 3º colocados no geral.
+          </p>
+        </details>
+
+        <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition-all [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between font-bold text-slate-800 cursor-pointer text-sm sm:text-base">
+            <span>Como usar este simulador interativo?</span>
+            <span class="transition group-open:rotate-180 text-slate-500">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </span>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200 pt-3">
+            É simples! Basta preencher os placares desejados em cada partida dos grupos. A tabela de pontuação, saldo de gols e a lista de classificados para a fase final são atualizadas instantaneamente. Você também pode usar o botão "Simular Aleatório" para gerar placares automáticos ou compartilhar seus palpites no WhatsApp!
+          </p>
+        </details>
+
+        <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition-all [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between font-bold text-slate-800 cursor-pointer text-sm sm:text-base">
+            <span>Quais são os grupos da Copa do Mundo 2026 no simulador?</span>
+            <span class="transition group-open:rotate-180 text-slate-500">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </span>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200 pt-3">
+            O simulador inclui os 12 grupos completos (Grupos A ao L) com seleções de todas as confederações (CONMEBOL, UEFA, CONCACAF, CAF, AFC e OFC), incluindo potências como Brasil, Argentina, França, Alemanha, Espanha, Inglaterra, Uruguai e os países-sede (EUA, Canadá e México).
+          </p>
+        </details>
+      </div>
+    </section>
+
   </main>
 
   <!-- Footer -->
@@ -165,6 +353,14 @@
       </div>
     </div>
   </footer>
+
+  <!-- Bottom Sticky Banner Ad Container (Footer / Vignette Container) -->
+  <aside aria-label="Anúncio Rodapé Fixo" class="fixed bottom-0 left-0 right-0 z-40 bg-slate-900/95 backdrop-blur border-t border-slate-700 py-1.5 px-4 flex justify-center items-center shadow-2xl">
+    <div class="ad-container w-full max-w-[728px] min-h-[50px] flex items-center justify-center text-slate-400 text-xs font-semibold text-center">
+      <!-- FOOTER_AD_HERE -->
+      <span class="uppercase tracking-wider">Espaço Publicitário • Anúncio Fixo Rodapé (320x50 / 728x90)</span>
+    </div>
+  </aside>
 
   <!-- Application Logic -->
   <script>
@@ -248,12 +444,6 @@
     let userScores = {};
 
     // Generate standard match schedule for a 4-team group (Indices: 0, 1, 2, 3)
-    // Match 1: 0 vs 1
-    // Match 2: 2 vs 3
-    // Match 3: 0 vs 2
-    // Match 4: 3 vs 1
-    // Match 5: 3 vs 0
-    // Match 6: 1 vs 2
     const MATCH_PAIRINGS = [
       [0, 1], [2, 3],
       [0, 2], [3, 1],
