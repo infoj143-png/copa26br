@@ -24,4 +24,4 @@ User-agent: DeepSeekBot
 Allow: /
 
 # Sitemap
-Sitemap: https://copa2026.example.com/sitemap.xml
+Sitemap: https://copa26br.vercel.app/sitemap.xml
