@@ -32,19 +32,34 @@
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://copa2026.example.com/#website",
-        "url": "https://copa2026.example.com/",
+        "@id": "https://copa26br.vercel.app/#website",
+        "url": "https://copa26br.vercel.app/",
         "name": "Tabela e Simulador da Copa do Mundo 2026",
         "description": "Simulador interativo dos jogos e tabela da Copa do Mundo FIFA 2026 com atualização em tempo real.",
         "inLanguage": "pt-BR"
       },
       {
         "@type": "SportsEvent",
-        "@id": "https://copa2026.example.com/#event",
+        "@id": "https://copa26br.vercel.app/#event",
         "name": "Copa do Mundo FIFA 2026",
         "description": "Copa do Mundo FIFA 2026 realizada conjuntamente nos Estados Unidos, Canadá e México com 48 seleções.",
         "startDate": "2026-06-11",
         "endDate": "2026-07-19",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://copa26br.vercel.app/favicon.ico"
+        ],
+        "performer": {
+          "@type": "SportsTeam",
+          "name": "Seleções da Copa do Mundo FIFA 2026"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "BRL",
+          "availability": "https://schema.org/InStock",
+          "url": "https://copa26br.vercel.app/"
+        },
         "sport": "Futebol / Soccer",
         "location": [
           {
@@ -71,7 +86,7 @@
       },
       {
         "@type": "FAQPage",
-        "@id": "https://copa2026.example.com/#faq",
+        "@id": "https://copa26br.vercel.app/#faq",
         "mainEntity": [
           {
             "@type": "Question",
